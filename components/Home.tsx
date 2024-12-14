@@ -6,10 +6,24 @@ import Pagination from "./ui/Pagination";
 
 import { MdBookmark } from "react-icons/md";
 
-export default async function List(props) {
+// export async function getServerSideProps() {
+
+//   return {
+//     props: {
+//       hitokoto: data.hitokoto,
+//       // from: data.from,
+//     },
+//   };
+// }
+
+export default async function List(props, hitokoto) {
   let d;
   d = props.data;
   const view = d.wiki;
+
+  const word = await fetch("https://v1.hitokoto.cn/?=d");
+  const data = await word.json();
+  console.log(data);
 
   console.log("page:" + props.currentPage);
   const ListItems = d.posts.map((list) => (
@@ -74,7 +88,10 @@ export default async function List(props) {
       </div>
       <div className={`${styles.container}`}>
         <div className={styles.bar}>
-          <p className={styles.bar_text}>{view?.description}</p>
+          <p className={styles.bar_text}>
+            {data.hitokoto}
+            {/* {view?.description} */}
+          </p>
         </div>
         <div className={styles.layout}>
           <div className={styles.list_items}>

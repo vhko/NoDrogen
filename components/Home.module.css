@@ -143,7 +143,8 @@
 .auther_card {
   width: 300px;
   height: 340px;
-  background: #425aef;
+  /* background: #425aef; */
+  background: #2383E2;
 }
 
 .auther_avatar {
